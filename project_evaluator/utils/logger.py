@@ -24,7 +24,10 @@ class Logger:
     _instance: Optional['Logger'] = None
     _initialized: bool = False
     
-    def __new__(cls) -> 'Logger':
+    def __new__(cls, 
+                name: str = "project_evaluator",
+                level: int = logging.INFO,
+                log_file: Optional[Path] = None) -> 'Logger':
         """Ensure only one logger instance exists."""
         if cls._instance is None:
             cls._instance = super().__new__(cls)
