@@ -1,0 +1,127 @@
+# Scoring Configuration for AI Project Auto-Evaluator
+
+scoring:
+  weights:
+    code_quality: 0.30
+    architecture: 0.25
+    maintainability: 0.20
+    test_coverage: 0.15
+    ml_ai_readiness: 0.10
+
+  thresholds:
+    # Cyclomatic Complexity (per function)
+    complexity:
+      excellent: 5
+      good: 10
+      moderate: 15
+      poor: 20
+    
+    # Maintainability Index
+    maintainability:
+      excellent: 80
+      good: 65
+      moderate: 50
+      poor: 25
+    
+    # Lines of Code per file
+    file_size:
+      small: 200
+      medium: 500
+      large: 1000
+      very_large: 2000
+    
+    # Test coverage estimation
+    test_coverage:
+      excellent: 80
+      good: 60
+      moderate: 40
+      poor: 20
+
+  architecture_indicators:
+    good_patterns:
+      - "separation of concerns"
+      - "modular structure"
+      - "configuration files"
+      - "proper folder hierarchy"
+      - "dependency injection"
+    
+    bad_patterns:
+      - "god objects"
+      - "spaghetti code"
+      - "circular dependencies"
+      - "tight coupling"
+
+  ml_ai_indicators:
+    frameworks:
+      - "tensorflow"
+      - "pytorch"
+      - "scikit-learn"
+      - "keras"
+      - "transformers"
+      - "huggingface"
+      - "numpy"
+      - "pandas"
+    
+    files:
+      - "requirements.txt"
+      - "environment.yml"
+      - "Dockerfile"
+      - "model"
+      - "dataset"
+      - "train"
+      - "inference"
+
+  file_extensions:
+    python:
+      - ".py"
+    config:
+      - ".yaml"
+      - ".yml"
+      - ".json"
+      - ".toml"
+      - ".ini"
+    documentation:
+      - ".md"
+      - ".rst"
+      - ".txt"
+    test:
+      - "test_*.py"
+      - "*_test.py"
+
+analysis:
+  # Files/directories to ignore
+  ignore_patterns:
+    - "__pycache__"
+    - "*.pyc"
+    - ".git"
+    - ".venv"
+    - "venv"
+    - "env"
+    - "node_modules"
+    - ".pytest_cache"
+    - ".mypy_cache"
+    - "*.egg-info"
+    - "dist"
+    - "build"
+  
+  # Minimum repo size to analyze (in bytes)
+  min_repo_size: 1024
+  
+  # Maximum files to analyze (safety limit)
+  max_files: 10000
+
+cache:
+  # Cache directory for cloned repos
+  directory: ".cache/repos"
+  
+  # Cache expiry in days
+  expiry_days: 7
+
+output:
+  # Report formats
+  formats:
+    - "terminal"
+    - "json"
+  
+  # JSON output file
+  json_file: "evaluation_report.json"
